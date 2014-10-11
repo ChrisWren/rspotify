@@ -113,7 +113,7 @@ module RSpotify
     #           playlists.first.class #=> RSpotify::Playlist
     #           playlists.first.name  #=> "Movie Soundtrack Masterpieces"
     def playlists
-      json = RSpotify.auth_get("users/#{@id}/playlists")
+      json = User.oauth_get(@id, "users/#{@id}/playlists")
       json['items'].map { |i| Playlist.new i }
     end
 
